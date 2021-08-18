@@ -1,0 +1,48 @@
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+// @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;600;700;900&display=swap');
+// @import "./color.css";
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+@mixin display_center(){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin display_as_column(){
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin display_as_column_center(){
+    @include display_as_column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin display_as_row(){
+    display: flex;
+    flex-direction: row;
+}
+@mixin display_as_row_end {
+    @include display_as_row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@mixin display_as_row_center(){
+    @include display_as_row;
+    justify-content: center;
+    align-items: center;
+}
+@mixin display_as_row_space_between(){
+    @include display_as_row;
+    justify-content: space-between;
+    align-items: center;
+}

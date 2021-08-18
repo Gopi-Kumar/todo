@@ -1,0 +1,55 @@
+@import './utills.scss';
+$primary_background : rgb(0, 27, 54);
+$secondry_background : rgba(0, 0, 87, 0.596);
+$todo_text : white;
+$header_background: rgb(1, 40, 126);
+$navbar_background:rgb(0, 0, 87);
+
+body{
+    overflow:hidden;
+    background-color: $primary_background;
+    color:$todo_text;
+    font-smooth: smooth;
+    .todo_header{
+        background:$header_background;
+        font-size: 20px;
+        @include display_as_row_center();
+        padding:20px;
+    }
+    #main_container{
+        width:100vw;
+        @include display_as_row_center();
+        #todo_navbar{
+            height: 100vh;
+            width:300px;
+            // overflow: scroll;
+            background:$navbar_background;
+            #all_lists_container{
+                section{
+                    @include display_as_row_space_between();
+                }
+            }
+        }
+        #todo_container{
+            overflow:scroll;
+            width:calc(100vw - 150px);
+            height:100vh;
+            @include display_as_column();
+            align-items: center;
+            #todo_items{
+                .todo_item{
+                    background:$secondry_background;
+                    border-radius: 5px;
+                    width:300px;
+                    @include display_as_row();
+                    align-items: center;
+                    padding:10px 15px;
+                    margin:7px;
+                    section{
+                        @include display_as_column();
+                    }
+                }
+            }
+        }
+    }
+}
