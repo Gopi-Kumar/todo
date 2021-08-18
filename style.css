@@ -1,9 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;600;700;900&display=swap");
+@import "./color.css";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-family: "Heebo", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #0e0e83;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0e0e83;
+  border-radius: 15px;
 }
 
 body {
@@ -21,6 +39,9 @@ body .todo_header {
   align-items: center;
   padding: 20px;
 }
+body .active_list {
+  background: #001b36;
+}
 body #main_container {
   width: 100vw;
   display: flex;
@@ -33,33 +54,136 @@ body #main_container #todo_navbar {
   width: 300px;
   background: #000057;
 }
-body #main_container #todo_navbar #all_lists_container section {
+body #main_container #todo_navbar #all_lists_container section, body #main_container #todo_navbar #all_lists_container button {
+  padding: 0px 10px;
+  height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 255, 0.397);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+}
+body #main_container #todo_navbar #all_lists_container section:hover, body #main_container #todo_navbar #all_lists_container button:hover {
+  background: #001b36;
+}
+body #main_container #todo_navbar #all_lists_container button {
+  background: transparent;
+  width: 100%;
+  outline: none;
+  border: none;
+  text-align: center;
+  padding-left: 15px;
+  color: white;
+  font-size: 15px;
 }
 body #main_container #todo_container {
-  overflow: scroll;
+  overflow-y: scroll;
   width: calc(100vw - 150px);
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 70px;
+}
+body #main_container #todo_container #todo_items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 body #main_container #todo_container #todo_items .todo_item {
-  background: rgba(0, 0, 87, 0.596);
+  width: 90%;
+  background: #0e0e83;
   border-radius: 5px;
-  width: 300px;
+  min-width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10px 15px;
   margin: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.438);
+}
+body #main_container #todo_container #todo_items .todo_item .checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: #001b36;
+  border: 1px solid rgba(255, 255, 255, 0.384);
+  border-radius: 2px;
+  margin: 15px;
 }
 body #main_container #todo_container #todo_items .todo_item section {
   display: flex;
   flex-direction: column;
+}
+body #main_container #todo_container #todo_items .todo_item section p:nth-child(2) {
+  font-size: 13px;
+}
+body #main_container #todo_container #todo_input {
+  width: 50vw;
+  position: fixed;
+  bottom: 10px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+}
+body #main_container #todo_container #todo_input section input {
+  height: 40px;
+  outline: none;
+  border: none;
+  background: #013569;
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px solid white;
+  font-size: 16px;
+  color: white;
+}
+body #main_container #todo_container #todo_input section input::placeholder {
+  color: #001b36;
+  font-weight: bold;
+  font-size: 13px;
+}
+body .new_todo_input_form {
+  width: 300px;
+  height: 120px;
+  background: #001b36;
+  position: absolute;
+  left: calc(50% - 150px);
+  top: calc(50% - 75px);
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+body .new_todo_input_form input {
+  background: #013569;
+  outline: None;
+  border: none;
+  width: 250px;
+  height: 30px;
+}
+body .new_todo_input_form .buttons {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+body .new_todo_input_form .buttons button {
+  background: #0e0e83;
+  outline: None;
+  border: None;
+  padding: 5px 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
