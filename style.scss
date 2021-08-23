@@ -78,7 +78,7 @@ body{
             height:100vh;
             @include display_as_column();
             align-items: center;
-            padding-bottom: 70px;
+            padding-bottom: 60px;
             #todo_items{
                 width:100%;
                 @include display_as_column();
@@ -104,7 +104,7 @@ body{
                         margin:15px;
                         i{
                             display:none;
-                            color:green;
+                            color:rgb(5, 231, 5);
                         }
                     }
                     section{
@@ -117,11 +117,13 @@ body{
                     }
                 }
                 .completed_item{
-                    filter:grayscale(0.6);
+                    border:none;
+                    filter:grayscale(0.5);
                     .checkbox{
+                        cursor: none;
+
                         i{
                             color:gray;
-                            cursor: none;
                             display:block;
                         }
                     }

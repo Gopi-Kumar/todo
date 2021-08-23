@@ -35,7 +35,7 @@ function renderTodo(){
             let todo_item = document.createElement("div");
             todo_item.classList.add("todo_item");
             let html = `
-                <div class="checkbox">
+                <div class="checkbox"  onclick="deleteTodo(this)">
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <section>
@@ -109,7 +109,7 @@ function renderSpecificListTodos(listId){
             let todo_item = document.createElement("div");
             todo_item.classList.add("todo_item");
             let html = `
-                <div class="checkbox">
+                <div class="checkbox" onclick="deleteTodo(this)">
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <section>
@@ -142,9 +142,38 @@ function renderSpecificListTodos(listId){
 
 let newTodoInput = document.querySelector("#todo_input");
 function addNewTodo(){
+   if(newTodoInput.value != ""){
     todos[currentSelectedListIndex].todo_item.push(newTodoInput.value);
     renderSpecificListTodos(currentSelectedListIndex);
     renderList();
+   }
 }
+
+function  deleteTodo(args){
+    args.children[0].style.display = "block";
+    setTimeout(() => {
+        let section = args.nextSibling.nextSibling;
+        let list_name = section.children[1].innerText;
+        let todo_item_name =  section.children[0].innerText;
+    
+        todos.map(todo => {
+            if(todo.list_name == list_name){
+                currentSelectedListIndex = todo.id;
+                return;
+            }
+        })
+        let removeItemFrom = todos[currentSelectedListIndex].todo_item;
+        let newTodoArray = []; 
+        removeItemFrom.map(item => {
+            if(item != todo_item_name)
+                newTodoArray.push(item);
+        })
+        todos[currentSelectedListIndex].todo_item = newTodoArray;
+        todos[currentSelectedListIndex].completed_item.push(todo_item_name)
+    
+        renderSpecificListTodos(currentSelectedListIndex);
+    }, 200);
+}
+
 
 
