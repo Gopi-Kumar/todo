@@ -2,17 +2,23 @@ let todos = [
     {
         list_name : "Default",
         id: 0,
-        todo_item : ["Buy Milk", "Go for Walk", "Be active"]
+        todo_item : ["Buy Milk", "Go for Walk", "Be active"],
+        completed_item : ["Sadhna ko pitna hai"],
+        
     },
     {
         list_name : "Shopping",
         id:1,
-        todo_item : ["Buy a study chair", "Buy a keyboard", "Buy a house"]
+        todo_item : ["Buy a study chair", "Buy a keyboard", "Buy a house"],
+        completed_item : ["Aur Gaurishanker ko bhi","Sadhna ko pitna hai"],
+
     },
     {
         list_name :"Youtube",
         id:2,
-        todo_item : ["Complete Dynamic programming", "Bit Manupulation"]
+        todo_item : ["Complete Dynamic programming", "Bit Manupulation"],
+        completed_item : ["Suruchi ke mar kar muh for denge","Aur Gaurishanker ko bhi","Sadhna ko pitna hai"],
+
     }
 ]
 
@@ -30,7 +36,7 @@ function renderTodo(){
             todo_item.classList.add("todo_item");
             let html = `
                 <div class="checkbox">
-                    <span>&check;</span>
+                    <i class="fas fa-check-circle"></i>
                 </div>
                 <section>
                     <p>${item}</p>
@@ -42,7 +48,29 @@ function renderTodo(){
         })
     })
 }
+function renderCompletedTodo(){
+    todos.map(todo => {
+        let list_name = todo.list_name;
+        todo.completed_item.map(item => {
+             let completed_item = document.createElement("div");
+             completed_item.classList.add("completed_item");
+             let html = `
+                 <div class="checkbox">
+                     <i class="fas fa-check-circle"></i>
+                 </div>
+                 <section>
+                     <p>${item}</p>
+                     <p>${list_name}</p>
+                 </section>
+             `
+             completed_item.innerHTML = html;
+             todo_container.appendChild(completed_item)
+         })
+     })
+}
+
 renderTodo();
+renderCompletedTodo();
 
 let list_container= document.getElementById("all_lists_container");
 function renderList(){
@@ -82,7 +110,7 @@ function renderSpecificListTodos(listId){
             todo_item.classList.add("todo_item");
             let html = `
                 <div class="checkbox">
-                    <span>&check;</span>
+                    <i class="fas fa-check-circle"></i>
                 </div>
                 <section>
                     <p>${item}</p>
@@ -92,6 +120,22 @@ function renderSpecificListTodos(listId){
             todo_item.innerHTML = html;
             todo_container.appendChild(todo_item)
     })
+    todos[listId].completed_item.map(item => {
+        let list_name = todos[listId].list_name;
+             let todo_item = document.createElement("div");
+             todo_item.classList.add("completed_item");
+             let html = `
+                 <div class="checkbox">
+                     <i class="fas fa-check-circle"></i>
+                 </div>
+                 <section>
+                     <p>${item}</p>
+                     <p>${list_name}</p>
+                 </section>
+             `
+             todo_item.innerHTML = html;
+             todo_container.appendChild(todo_item)
+     })
 }
 
 //new todo 

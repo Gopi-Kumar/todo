@@ -83,7 +83,7 @@ body{
                 width:100%;
                 @include display_as_column();
                 align-items: center;
-                .todo_item{
+                .todo_item,.completed_item{
                     width:90%;
                     background:$secondry_background;
                     border-radius: 5px;
@@ -102,6 +102,10 @@ body{
                         border:1px solid rgba(255, 255, 255, 0.384);
                         border-radius: 2px;
                         margin:15px;
+                        i{
+                            display:none;
+                            color:green;
+                        }
                     }
                     section{
                         @include display_as_column();
@@ -109,6 +113,16 @@ body{
                             &:nth-child(2){
                                 font-size: 13px;
                             }
+                        }
+                    }
+                }
+                .completed_item{
+                    filter:grayscale(0.6);
+                    .checkbox{
+                        i{
+                            color:gray;
+                            cursor: none;
+                            display:block;
                         }
                     }
                 }
@@ -124,7 +138,7 @@ body{
                 border:2px solid $primary_background;
                 box-shadow: 2px 2px 5px black;
                 input{
-                    width:300px;
+                    width:calc(100% - 50px);
                     height:40px;
                     outline:none;
                     border:none;

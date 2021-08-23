@@ -89,7 +89,7 @@ body #main_container #todo_container #todo_items {
   flex-direction: column;
   align-items: center;
 }
-body #main_container #todo_container #todo_items .todo_item {
+body #main_container #todo_container #todo_items .todo_item, body #main_container #todo_container #todo_items .completed_item {
   width: 90%;
   background: #0e0e83;
   border-radius: 5px;
@@ -101,7 +101,7 @@ body #main_container #todo_container #todo_items .todo_item {
   margin: 7px;
   border: 1px solid rgba(255, 255, 255, 0.438);
 }
-body #main_container #todo_container #todo_items .todo_item .checkbox {
+body #main_container #todo_container #todo_items .todo_item .checkbox, body #main_container #todo_container #todo_items .completed_item .checkbox {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -114,12 +114,24 @@ body #main_container #todo_container #todo_items .todo_item .checkbox {
   border-radius: 2px;
   margin: 15px;
 }
-body #main_container #todo_container #todo_items .todo_item section {
+body #main_container #todo_container #todo_items .todo_item .checkbox i, body #main_container #todo_container #todo_items .completed_item .checkbox i {
+  display: none;
+  color: green;
+}
+body #main_container #todo_container #todo_items .todo_item section, body #main_container #todo_container #todo_items .completed_item section {
   display: flex;
   flex-direction: column;
 }
-body #main_container #todo_container #todo_items .todo_item section p:nth-child(2) {
+body #main_container #todo_container #todo_items .todo_item section p:nth-child(2), body #main_container #todo_container #todo_items .completed_item section p:nth-child(2) {
   font-size: 13px;
+}
+body #main_container #todo_container #todo_items .completed_item {
+  filter: grayscale(0.6);
+}
+body #main_container #todo_container #todo_items .completed_item .checkbox i {
+  color: gray;
+  cursor: none;
+  display: block;
 }
 body #main_container #todo_container #todo_input_container {
   border-radius: 29px;
@@ -134,7 +146,7 @@ body #main_container #todo_container #todo_input_container {
   box-shadow: 2px 2px 5px black;
 }
 body #main_container #todo_container #todo_input_container input {
-  width: 300px;
+  width: calc(100% - 50px);
   height: 40px;
   outline: none;
   border: none;
