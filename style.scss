@@ -113,22 +113,23 @@ body{
                     }
                 }
             }
-            #todo_input{
+            #todo_input_container{
+                border-radius:29px;
+                overflow:hidden;
                 width:50vw;
                 position: fixed;
                 bottom: 10px;
                 min-width: 300px;
                 @include display_as_row();
-                section{
-                   input{
+                border:2px solid $primary_background;
+                box-shadow: 2px 2px 5px black;
+                input{
+                    width:300px;
                     height:40px;
                     outline:none;
                     border:none;
                     background:$input_background;
                     padding:15px;
-                    border-radius: 20px;
-                    border: 1px solid white;
-                    // box-shadow: 5px 5px 10px black,-5px -5px 10px black  ;
                     font-size: 16px;
                     color:white;
                     &::placeholder{
@@ -136,7 +137,17 @@ body{
                         font-weight: bold;
                         font-size: 13px;
                     }
-                   }
+                }
+                button{
+                    @include display_as_row_center();
+                    background:$primary_background;
+                    outline:none;
+                    border:none;
+                    font-size: 15px;
+                    padding:15px;
+                    height:40px;
+                    cursor:pointer;
+                    color:white;
                 }
             }
         }
@@ -148,7 +159,8 @@ body{
         position: absolute;
         left:calc(50% - 150px);
         top:calc(50% - 75px);
-        border:1px solid white;
+        border:2px solid $primary_background;
+        box-shadow: 2px 2px 5px black;
         @include display_as_column_center();
         display: none;
 
@@ -158,16 +170,18 @@ body{
             border:none;
             width:250px;
             height:30px;
-            
+            color:white;
+            padding:5px;
         }
         .buttons{
             width:250px;
             @include display_as_row_space_between();
             button{
+                cursor: pointer;
                 background:$secondry_background;
                 outline:None;
                 border:None;
-                padding:5px 15px;
+                padding:8px 15px;
                 margin-top:15px;
                 border-radius: 5px;
                 color:white;
