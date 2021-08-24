@@ -1,19 +1,26 @@
-let todos = [
-    {
-        list_name : "Default",
-        id: 0,
-        todo_item : [],
-        completed_item : [],
-        
-    },
-]
-let todosArrayLength = todos.length;
-let currentSelectedListIndex = 0;
+let todos;
+function getTodosFromLocalStorage(){
+    todos = JSON.parse(localStorage.getItem("todos_new"));
+}
+getTodosFromLocalStorage();
 
+let currentSelectedListIndex = 0;
 const todo_container = document.getElementById("todo_items");
 
 
+function saveTodoToLocalStorage(){
+    localStorage.setItem("todos_new",JSON.stringify(todos));
+}
 function renderTodo(){
+    if(todos == null || todos.length == 0){
+        todos = [{
+            list_name : "Default",
+            id: 0,
+            todo_item : [],
+            completed_item : [],
+            
+        }]
+    }
     todo_container.innerHTML = "";
     todos.map(todo => {
        let list_name = todo.list_name;
@@ -136,6 +143,7 @@ function addNewTodo(){
     todos[currentSelectedListIndex].todo_item.push(newTodoInput.value);
     renderSpecificListTodos(currentSelectedListIndex);
     renderList();
+    saveTodoToLocalStorage();
    }
 }
 
@@ -162,6 +170,7 @@ function  deleteTodo(args){
         todos[currentSelectedListIndex].completed_item.push(todo_item_name)
     
         renderSpecificListTodos(currentSelectedListIndex);
+        saveTodoToLocalStorage();
     }, 200);
 }
 
@@ -191,6 +200,7 @@ function saveTodoList(){
         renderList();
         renderSpecificListTodos(currentSelectedListIndex);
     }
+    saveTodoToLocalStorage();
     closeListInput();
 }
 
@@ -206,6 +216,7 @@ function deleteTodoList(args) {
         }
         todos.pop();
     }
+    saveTodoToLocalStorage();
     renderList();
     renderTodo();
 }

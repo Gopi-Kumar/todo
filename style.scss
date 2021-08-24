@@ -150,6 +150,7 @@ body{
                     }
                 }
                 .completed_item{
+                    opacity: 0.3;
                     border:none;
                     filter:grayscale(0.5);
                     .checkbox{

@@ -152,6 +152,7 @@ body #main_container #todo_container #todo_items .todo_item section p:nth-child(
   font-size: 13px;
 }
 body #main_container #todo_container #todo_items .completed_item {
+  opacity: 0.3;
   border: none;
   filter: grayscale(0.5);
 }
