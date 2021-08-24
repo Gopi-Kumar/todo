@@ -2,26 +2,12 @@ let todos = [
     {
         list_name : "Default",
         id: 0,
-        todo_item : ["Buy Milk", "Go for Walk", "Be active"],
-        completed_item : ["Sadhna ko pitna hai"],
+        todo_item : [],
+        completed_item : [],
         
     },
-    {
-        list_name : "Shopping",
-        id:1,
-        todo_item : ["Buy a study chair", "Buy a keyboard", "Buy a house"],
-        completed_item : ["Aur Gaurishanker ko bhi","Sadhna ko pitna hai"],
-
-    },
-    {
-        list_name :"Youtube",
-        id:2,
-        todo_item : ["Complete Dynamic programming", "Bit Manupulation"],
-        completed_item : ["Suruchi ke mar kar muh for denge","Aur Gaurishanker ko bhi","Sadhna ko pitna hai"],
-
-    }
 ]
-
+let todosArrayLength = todos.length;
 let currentSelectedListIndex = 0;
 
 const todo_container = document.getElementById("todo_items");
@@ -79,8 +65,7 @@ function renderList(){
     allList.setAttribute("id", "list_heading");
     allList.classList.add("active_list");
     let html = `
-        <p>All Lists</p>
-        
+        <p class="all_list">All Lists</p>
     `
     allList.innerHTML = html;
     list_container.appendChild(allList);
@@ -88,21 +73,26 @@ function renderList(){
         let section = document.createElement("section");
         section.setAttribute("id", `${todo.id}`)
         section.classList.add("list");
-        section.setAttribute("onclick","renderSpecificListTodos(this.id)")
+
         let html = `
-            <p>${todo.list_name}</p>
-            <p class="todo_count">${todo.todo_item.length}</p>
+            <p onclick="renderSpecificListTodos(this.parentNode.id)"><i class="fas fa-list"></i>${todo.list_name} <span>${todo.todo_item.length}</span> </p>
+            <i class="fas fa-trash" onclick="deleteTodoList(this)"></i>
         `
 
         section.innerHTML = html;
-        list_container.appendChild(section)
+        list_container.appendChild(section);
     })
+    let clsection = document.createElement("section");
+    clsection.innerText = "Create New List";
+    clsection.setAttribute("onclick","createNewTodoList()");
+    clsection.setAttribute("class","create_list")
+    list_container.appendChild(clsection);
 }
 renderList();
 
 
 function renderSpecificListTodos(listId){
-    currentSelectedListIndex = listId;
+    currentSelectedListIndex =listId;
     todo_container.innerHTML = "";
     todos[listId].todo_item.map(item => {
        let list_name = todos[listId].list_name;
@@ -175,5 +165,47 @@ function  deleteTodo(args){
     }, 200);
 }
 
+//new todo list
+let newTodoList = document.querySelector(".new_todo_input_form")
+function createNewTodoList(){
+   newTodoList.style.display = "flex";
+}
 
+function closeListInput(){
+    newTodoList.style.display = "none";
+}
 
+function saveTodoList(){
+    console.log(todos.length)
+    let listName = document.querySelector(".new_todo_input_form #new_todo_input").value;
+    if(listName != ""){
+        currentSelectedListIndex = todos.length;
+        let newTodo = {
+            list_name : listName,
+            id:todos.length,
+            todo_item : [],
+            completed_item : [],
+        }
+        todos.push(newTodo);
+        console.log(todos)
+        renderList();
+        renderSpecificListTodos(currentSelectedListIndex);
+    }
+    closeListInput();
+}
+
+function deleteTodoList(args) {
+    
+    let listIndextoRemove = args.parentNode.id;
+    if(listIndextoRemove == (todos.length - 1)){
+        todos.pop();
+    }else{
+        for(let i=Number(listIndextoRemove); i<(todos.length - 1); i++){
+            todos[i+1].id--;
+            todos[i] = todos[i+1];
+        }
+        todos.pop();
+    }
+    renderList();
+    renderTodo();
+}

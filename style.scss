@@ -49,8 +49,6 @@ body{
             #all_lists_container{
 
                 section,button{
-                    padding:0px 10px;
-                    height:50px;
                     border-bottom:1px solid rgba(0, 0, 255, 0.397);
                     // padding:15px;
                     @include display_as_row_space_between();
@@ -58,7 +56,42 @@ body{
                     &:hover{
                         background:$primary_background;
                     }
+                    p{
+                        padding:12px 5px;
+                    }
+                    span{
+                        // @include display_as_row_center();
+                        padding:4px 7px;
+                        border-radius: 50%;
+                        background:rgba(172, 45, 45, 0.897);
+                        color:rgb(182, 180, 49);
+                        font-weight: bold;
+                        font-size: 14px;
+                        margin-left: 5px;
+                    }
+                    .fa-list{
+                        // display: none;
+                        margin:5px;
+                        // font-size: 12px;
+                    }
+                    .fa-trash{
+                        padding:10px;
+                        &:hover{
+                            color:red;
+                        }
+                    
+                    }
+                    &:nth-child(2){
+                        .fa-trash{
+                            display: none;
+                        }
+                    }
+                    
                 }
+               .create_list,
+               .all_list{
+                   padding:15px 5px;
+               }
                 button{
                     background:transparent;
                     width:100%;

@@ -52,8 +52,6 @@ body #main_container #todo_navbar {
   background: #000057;
 }
 body #main_container #todo_navbar #all_lists_container section, body #main_container #todo_navbar #all_lists_container button {
-  padding: 0px 10px;
-  height: 50px;
   border-bottom: 1px solid rgba(0, 0, 255, 0.397);
   display: flex;
   flex-direction: row;
@@ -63,6 +61,34 @@ body #main_container #todo_navbar #all_lists_container section, body #main_conta
 }
 body #main_container #todo_navbar #all_lists_container section:hover, body #main_container #todo_navbar #all_lists_container button:hover {
   background: #001b36;
+}
+body #main_container #todo_navbar #all_lists_container section p, body #main_container #todo_navbar #all_lists_container button p {
+  padding: 12px 5px;
+}
+body #main_container #todo_navbar #all_lists_container section span, body #main_container #todo_navbar #all_lists_container button span {
+  padding: 4px 7px;
+  border-radius: 50%;
+  background: rgba(172, 45, 45, 0.897);
+  color: #b6b431;
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 5px;
+}
+body #main_container #todo_navbar #all_lists_container section .fa-list, body #main_container #todo_navbar #all_lists_container button .fa-list {
+  margin: 5px;
+}
+body #main_container #todo_navbar #all_lists_container section .fa-trash, body #main_container #todo_navbar #all_lists_container button .fa-trash {
+  padding: 10px;
+}
+body #main_container #todo_navbar #all_lists_container section .fa-trash:hover, body #main_container #todo_navbar #all_lists_container button .fa-trash:hover {
+  color: red;
+}
+body #main_container #todo_navbar #all_lists_container section:nth-child(2) .fa-trash, body #main_container #todo_navbar #all_lists_container button:nth-child(2) .fa-trash {
+  display: none;
+}
+body #main_container #todo_navbar #all_lists_container .create_list,
+body #main_container #todo_navbar #all_lists_container .all_list {
+  padding: 15px 5px;
 }
 body #main_container #todo_navbar #all_lists_container button {
   background: transparent;
